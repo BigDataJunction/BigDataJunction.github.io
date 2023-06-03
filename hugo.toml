@@ -1,4 +1,4 @@
-baseURL = 'http://bigdatajunction.com/'
+baseURL = 'http://sineshx.com/bigdatajunction'
 languageCode = 'en-us'
 title = 'Big Data Juncion'
-theme = 'paige'
+theme = 'ananke'
