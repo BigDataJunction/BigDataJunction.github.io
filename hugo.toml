@@ -1,0 +1,4 @@
+baseURL = 'http://bigdatajunction.github.io/'
+languageCode = 'en-us'
+title = 'BigDataJunction'
+theme = 'ananke'
