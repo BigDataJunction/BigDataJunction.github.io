@@ -16,6 +16,13 @@ Setup
     ```brew install hugo```
     windows:
     ```choco install hugo```
+
+theme setup:
+```git rm -r --cached themes/ananke```
+<!-- ```rm -rf themes/ananke``` -->
+delete contents of .gitmodules 
+```git submodule update```
+
 6. Install Anakle theme into project  
 ```git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke```
 -----------------------------setup done---------------------------------------
@@ -26,4 +33,3 @@ Setup
 ```hugo new posts/my-first-post.md```
 
 ```Content "bigdatajunction\\content\\posts\\my-first-post.md" created```
-
