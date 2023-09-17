@@ -33,3 +33,10 @@ delete contents of .gitmodules
 ```hugo new posts/my-first-post.md```
 
 ```Content "bigdatajunction\\content\\posts\\my-first-post.md" created```
+-----------------------------------------------------------------------------
+To cerate a blog 
+```hugo new posts/blog-uri.md```
+
+edit the blog-uri.md file from location 
+```content\\posts\\blog-uri.md```
+
