@@ -1,11 +1,29 @@
 # BigDataJunction.github.io
-A  sample static website. 
+Setup 
 
-create a hugo page 
+1. Download and install git 
+2. git setup 
+```git config --global user.name "your name"```
+```git config --global user.email youremail@gmail.com```
+
+3. Clone the repo
+```git clone https://github.com/BigDataJunction/BigDataJunction.github.io.git```
+
+4. go to the folder 
+```cd BigDataJunction.github.io```
+5. install  hugo 
+    mac:
+    ```brew install hugo```
+    windows:
+    ```choco install hugo```
+6. Install Anakle theme into project  
+```git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke```
+-----------------------------setup done---------------------------------------
+6. Start Hugo Server / build drafts and run with -D
+```hugo server -D```
+
+7. Create a hugo page 
 ```hugo new posts/my-first-post.md```
 
-`Content "bigdatajunction\\content\\posts\\my-first-post.md" created`
+```Content "bigdatajunction\\content\\posts\\my-first-post.md" created```
 
-build drafts and run higo server 
-```hugo server --buildDrafts
-hugo server -D```
