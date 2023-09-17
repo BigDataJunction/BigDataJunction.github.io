@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Python"
 date: 2023-09-18T01:56:18+05:30
-draft: true
+draft: false
 ---
 # Python
 

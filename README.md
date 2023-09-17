@@ -40,3 +40,6 @@ To cerate a blog
 edit the blog-uri.md file from location 
 ```content\\posts\\blog-uri.md```
 
+dont forget to make draft == false in .md file.
+```draft: false```
+
