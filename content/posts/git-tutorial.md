@@ -1,7 +1,7 @@
 ---
 title: "Git Tutorial"
 date: 2023-09-18T01:40:09+05:30
-draft: true
+draft: false
 ---
 
 # Git Tutorial
