@@ -60,7 +60,7 @@
 --------------------------------------------------------------------------
 ## To cerate a blog 
 ```bash 
-hugo new posts/blog-uri.md
+hugo new posts/post_name.md
 ```
 
 Edit the blog-uri.md file from location 
