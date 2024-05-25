@@ -1,4 +1,12 @@
 baseURL = 'http://bigdatajunction.github.io/'
 languageCode = 'en-us'
 title = 'BigDataJunction'
-theme = 'ananke'
+theme = "relearn"
+
+
+# Change the default theme to be use when building the site with Hugo
+
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "SEARCH"]
