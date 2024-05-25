@@ -144,7 +144,12 @@ Merge dev branch to local main branch
 
 ```git checkout main```
 
+
 ```git merge dev```
+
+esc 
+:q! + enter
+
 
 Run the local server and test the blog.
 
