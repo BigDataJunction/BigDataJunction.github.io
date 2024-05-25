@@ -4,8 +4,6 @@ date: 2023-09-18T01:40:09+05:30
 draft: false
 ---
 
-# Git Tutorial
-
 In this Git tutorial, we will cover the basics of Git, a distributed version control system that is widely used in software development. Git allows you to track changes in your code, collaborate with others, and manage your projects efficiently.
 
 ## What is Git?
