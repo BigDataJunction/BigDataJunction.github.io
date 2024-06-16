@@ -31,5 +31,4 @@ If you are an instructor or TA for a course that I have notes for and find somet
 
 ## Credits
 Here's a list of individuals who have made meaningful contributions to these notes over the years! If you make a pull request, feel free to add your name here as well.
- - [Arin Chang](https://github.com/arinchang): CS61B
- - [Zachary Zollman](https://github.com/zacharyzollman): CS61B, CS70
+ - [Kumar Omkar](https://github.com/kumaromkar): Python
