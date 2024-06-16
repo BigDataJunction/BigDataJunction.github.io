@@ -1,0 +1,21 @@
+
+<div class="like-button">
+    <link rel="stylesheet" href="https://api.bencuan.me/public/applause-button.css" />
+    <script src="https://api.bencuan.me/public/applause-button.js"></script>
+    
+    <!-- add the button! -->
+    <applause-button style="width: 48px; height: 48px" multiclap="true" color="#ff4faa" api="https://api.bencuan.me" />
+</div>
+
+{{/*  {{if $.Site.Params.enableFooter}}  */}}
+<div class="page-end" id="footer">
+    <div class="backlinks-container">
+        {{partial "quartz/backlinks.html" .}}
+    </div>
+    <div>
+        {{partial "quartz/graph.html" .}}
+    </div>
+</div>
+{{/*  {{end}}  */}}
+
+{{partial "quartz/contact" .}}
