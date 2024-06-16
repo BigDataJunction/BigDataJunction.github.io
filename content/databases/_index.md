@@ -1,11 +1,11 @@
 ---
-linkTitle: "CS 186: Databases"
-title: "Welcome to CS186!"
+linkTitle: "Databases"
+title: "Welcome to Databases!"
 weight: 30
 BookCollapseSection: true
 ---
 
-# Welcome to my CS186 Guide!
+# Welcome to my Databases Guide!
 
 This is a **non-comprehensive** guide to databases written with an intention to supplement learning and reviewing of Berkeley's [CS186](https://cs186berkeley.net) material. Main topics include:
 

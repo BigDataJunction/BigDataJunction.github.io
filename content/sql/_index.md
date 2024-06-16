@@ -1,5 +1,5 @@
 ---
-linkTitle: "CS 70: Discrete Math"
+linkTitle: "SQL"
 BookCollapseSection: true
 weight: 20
 ---

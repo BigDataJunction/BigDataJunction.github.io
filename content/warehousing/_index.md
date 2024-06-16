@@ -1,5 +1,5 @@
 ---
-title: "Data 102: Inference"
+title: "Data Warehousing"
 BookCollapseSection: true
 ---
 

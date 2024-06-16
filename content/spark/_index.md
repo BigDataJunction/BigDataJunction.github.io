@@ -1,9 +1,9 @@
 ---
-title: "CS 168: The Internet"
+title: "Spark"
 BookCollapseSection: true
 ---
 
-## CS168 Notes
+## Spark
 
 Here are my notes for the Fall 2022 offering of [CS168](https://cs168.io), Berkeley's Introduction to the Internet course.
 
