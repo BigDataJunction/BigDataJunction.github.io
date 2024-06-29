@@ -1,7 +1,7 @@
 ---
 linkTitle: "SQL"
 BookCollapseSection: true
-weight: 20
+weight: 10
 ---
 
 ## Welcome to my CS70 Guide!
