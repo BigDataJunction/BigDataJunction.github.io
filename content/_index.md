@@ -10,7 +10,7 @@ At BigData Junction, we are your ultimate destination for mastering the vast lan
 Explore comprehensive resources, tutorials, and guides on:
 
 - **Python**: Unlock the power of Python for seamless automation, cutting-edge data analysis and machine learning.
-- **SQL**: Master the art of querying and managing databases efficiently.
+- [**SQL**](https://bigdatajunction.com/sql/): Master the art of querying and managing databases efficiently.
 - **Spark & PySpark**: Learn to process and analyze large data sets with the speed and simplicity of Apache Spark.
 - **Airflow**: Discover the best practices for orchestrating complex data workflows with Apache Airflow.
 - **Data Warehousing**: Dive into the architecture and management of data warehouses to optimize your data storage solutions.
