@@ -5,66 +5,67 @@ BookCollapseSection: true
 
 ## Introduction
 
-> [!warning] Warning
->
-> This page was originally written in Spring 2023. It is likely outdated. Please ask your TA for the latest information!
+Airflow, formally known as Apache Airflow, is an open-source platform used to programmatically author, schedule, and monitor workflows. It users to create workflows as DAGs (directed acyclic graphs) of tasks, where each task represents an individual unit of work. In simple word it use to create data pipeline. It is primarily a batch-processing tool, meaning it schedules and runs tasks at intervals (e.g., every hour, daily).
 
-![Concept map](conceptmap.jpg)
+## History of Apache Airflow
 
-Being the largest course at Berkeley, CS 61A has a *lot* of existing resources- not to mention John DeNero's recorded lectures are everything you could ever hope for in a lecture. I just don't see how I could contribute any meaningful content note that hasn't been done extremely well multiple times already.
+Apache Airflow is an open-source workflow orchestration platform created by **Maxime Beauchemin** at **Airbnb** in **2014** to address the company's growing data pipeline complexity. It was designed to schedule, monitor, and manage workflows through DAGs (Directed Acyclic Graphs). These DAGs enable users to define and visualize task dependencies, making it easier to automate data engineering processes. In **2015**, Airflow was **open-sourced**, allowing the broader tech community to adopt and contribute to its development.
 
-Instead, I want to make a space where you can more easily find all of those resources, share some thoughts about my time TAing for 61A, and provide some dialogue about critical skills not taught in 61A but are necessary for succeeding in the CS major and software engineering.
+## Why Airflow
 
-## The important bits of 61A
+The reason why airflow flow is more popular because **''pipeline as a Code''**. Pipeline as Code means that you define your entire data workflow or pipeline using Python code. Airflow represents pipelines as DAGs (Directed Acyclic Graphs), where tasks (individual steps) are written in code and linked based on dependencies.
 
-CS61A is not really an intro CS class in that it moves *way* too quickly for someone who has never seen any of the concepts covered. This is, by design, a difficult truth of the matter: if you're not prepared for 61A (where it's assumed you've already seen much of the content), you're probably also not prepared for future CS classes that have an even larger amount of more conceptually difficult content.
+## Basic terminology used in Airflow
 
-Even as someone with prior experience, it's easy to get swept up and overwhelmed by the pace. If you're experiencing this, my advice is this:
+1. **DAG (Directed Acyclic Graph)**: **Directed** means task moves in one direction. **Acyclic** means there are no loops task do not move in circles. **Graph** is the visual representation of diffrent tasks. So the defination is a collection of tasks with dependencies between them. It defines the overall workflow structure and ensures tasks are executed in the correct order without any loops.
 
-**Don't get hung up on every detail- you don't need to understand everything perfectly, just the most important concepts.** I didn't feel comfortable with 61A content until teaching it for the 3rd or 4th time, and you probably only have one go at it!
+2. **Task**: A single unit of work in a DAG. Such as running a Python script, pulling data from API, executing a Bash command, or sending an email. 
 
-Here's a list of things I think is worth paying attention to, and why you should pay attention to them:
- - **ABSTRACTION:** If there's one word that should be burned into your memory after 61A, it's this. Abstraction is a concept that we take entirely for granted as computer scientists and software engineers- hopefully 61A helps you appreciate why we can't live without it.
- - **Recursion:** Recursion's really weird when you first learn about it- how can you make something call itself and somehow do a useful thing? Yet, recursion is found everywhere, from the lowest levels of computer architecture (61C) to the latest theory (CS70, CS170, etc).
- - **Learning new programming languages quickly:** 61A takes you between two or more languages in a fraction of time most people learn a single one. In future courses, learning new languages is a skill you're assumed to have built up from this experience: for example, 61B makes you learn Java in a week, and CS161 plops an entire project on you in Golang without formal instruction on how to use it. Pay attention to what skills you can carry over from Python, and figure out what helps you pick up new syntax faster (make make a cheat sheet).
- - **Environment diagram intuition:** You will probably never use an environment diagram after 61A/B, but the hope is that getting really good at making them will help you think more like a computer and understand which structures/algorithms are more efficient. Being able to reason through each step of an environment diagram (and maybe deriving the rules without memorizing them) are skills that will carry over to many aspects of computer science.
+3. **Task Instance**: An instance of a task within a job, which can have its own state (e.g., running, success, failed).
+
+4. **Job**: An instance of a DAG run, which can be triggered manually or automatically by a schedule.
+
+5. **Operator**: Operators are predefined templates in Airflow to perform specific tasks (e.g., BashOperator for running shell commands, PythonOperator for executing Python code).
+
+6. **Workflow**: Workflow is a sequence of tasks arranged in control depenency. Workflow and DAG can used interchangeably.
+
+7. **Sensor**: A special type of operator that waits for a certain condition to be met before proceeding (e.g., waiting for a file to appear).
+
+8. **Scheduler**: The component that monitors DAGs, schedules tasks, and determines when they should run based on their dependencies and schedules.
+
+9. **Executor**: Responsible for running tasks. Airflow supports various executors (e.g., LocalExecutor, CeleryExecutor, KubernetesExecutor) to scale the execution of tasks.
+
+10. **Hook**: Hooks manage connections to external systems (like databases or cloud services) and perform operations such as reading or writing data. or a way to extend Airflow's functionality by providing a custom interface to an external system or service.
+
+11. **Trigger**: Specifies when a DAG or task should start. Triggers can be based on time schedules or external conditions (e.g., arrival of new data).
+
+12. **XCom (Cross-communication)**: XComs are used for sharing data between tasks in a DAG. Tasks can "push" and "pull" data between each other using XComs.
 
 
-## Taking advantage of resources
+13. **Pool**: A limited resource that can be used by tasks, such as a database connection or a file handle.
 
-> [!summary] Resources Page
-> 
-> Go [here](/cs61a/resources) for a list of resources!
+14. **Queue**: A buffer that holds tasks waiting to be executed by an executor.
 
-Due to the large size of the class, it might be hard to navigate the massive but often limited network of resources available (long OH queues, lots of people asking questions at lecture, etc.). 
+15. **Connection**: A configuration for connecting to an external system, such as a database, file storage, or messaging service.
 
-Here's some tips that helped myself as well as many of my past students who needed extra support:
- - **Ask your TA for help!** TA's are available by email, during OH, or often right before/after discussion. You're welcome to ask them conceptual questions as well as consult them on your particular situation in the class. (Please be considerate of their time though- we're often not paid for the time we spend answering student questions outside of office hours, though we're almost always happy to help when we can!)
- - **Sign up for CSM sections!** CSM is an incredible resource that gives you free access to a tutor. Sections can range anywhere from 1 to 6 people in size, so you're usually able to find the size that works for you.
- - **Go to lab sections!** There's a lot of support in lab sections, and if it's not too busy, you're usually welcome to ask non-lab questions (such as for homework, practice exams, or content). It's a nice space to get work done and have shorter queue times compared to general office hours.
- - **Take good notes!** Taking notes during lecture, lab, and discussion will help you pay closer attention to the content, and have something to look back at when creating your cheat sheet for exams. As an added bonus, maybe you can put them online afterwards and help others :)
+16. **Variable**: A key-value pair that can be used to store and retrieve values in Airflow, often used to configure tasks or DAGs.
 
-## Exam Tips
+17. **Plugin**: A package that adds new functionality to Airflow, such as new operators, sensors, or executors.
 
-Unfortunately, only attending class and completing assignments is still not quite enough to guarantee success on exams. Make sure you're getting additional practice!
+18. **DAG Run**: An instance of a DAG execution, which can be triggered manually or automatically by a schedule.
 
-> [!summary] Exam Tips Page
-> 
-> Go [here](/cs61a/midterm-tips) for my test-taking tips!
+19. **Task Flow**: A sequence of tasks that are executed in a specific order, often triggered by a schedule or event.
 
-## How and why you should teach 61A
+20. **Airflow UI**: The web-based user interface for Airflow, which provides a visual representation of DAGs, tasks, and workflows.
 
-Being a student at Berkeley gives you the pretty unique opportunity to teach (and maybe even run) an official course for thousands of students while still being an undergrad.
+21. **TaskFlow API**: A feature introduced in Airflow 2.0, enabling task creation via Python functions, making workflows easier to define and manage.
 
-While teaching is definitely not for everyone, it can be an excellent motivator while you're still taking the course to do well-- striving to understand the content well enough to teach it will get you really good with the concepts at hand.
+22. **DagRun**: An instance of a DAG, representing a specific execution of the workflow based on a scheduled time or manual trigger.
 
-CSM and the AI program both do a great job of lowering the bar of entry for those interested in teaching. If you're sufficiently motivated and have a good grasp of the material, you have an excellent shot at trying it out.
+These terms are fundamental to understanding how Airflow works and how to build effective workflows.
 
-### What's the process for becoming a TA?
 
-The path to becoming a TA is different for everyone, but this is probably the most common path:
-1. Take the class you want to teach, and do well in it. (Don't worry if you don't- there will be plenty more classes to ace!)
-2. In the semester after, apply to be an AI or a CSM Junior Mentor (applications will be announced at the beginning of the semester in the class forum as well as EECS 101). It might take a semester or two to get accepted due to the demand, but be patient and seek out opportunities in other courses as well!
-3. Either before, during, or after AI/CSM, you can also take CS 370 to improve your pedagogical skills, get more experience with teaching, and stand out among other candidates for teaching positions.
-4. Apply for tutor or reader positions for any classes you'd like to teach (applications will be announced on EECS101 as well, typically due in October/November for Spring, Feb/March for Summer, March/April for Fall). Applying for summer sessions is generally the least competitive, since many existing TA's will probably be interning or doing something else over the summer.
-5. Once you're on course staff, it's generally a matter of time and interest before you become a TA (or head TA).
+
+## Airflow UI
+
+![Concept map](airflow_home_page_ui.png)
