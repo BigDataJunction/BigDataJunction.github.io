@@ -89,6 +89,10 @@ with DAG(
     start >> bash_task >> end
     
     # Make the DAGs globally avaiable
-    globals()["dag_for_sample_bash_operator__2024_09_28"]=dag
-    
+    globals()["dag_for_sample_bash_operator"]=dag
 
+```
+
+Below is the UI of airflow of above code:
+
+![Concept map](ui_bash_operator.png)
