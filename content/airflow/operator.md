@@ -90,5 +90,3 @@ with DAG(
     
     # Make the DAGs globally avaiable
     globals()["dag_for_sample_bash_operator__2024_09_28"]=dag
-
-
