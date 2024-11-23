@@ -1,30 +1,46 @@
 <h3>{{ i18n "backlinks" }}</h3>
 <ul class="backlinks">
-    {{$url := urls.Parse .Site.BaseURL }}
-    {{$host := strings.TrimRight "/" $url.Path }}
-    {{$curPage := strings.TrimPrefix $host (strings.TrimRight "/" .Page.RelPermalink)}}
-    {{$linkIndex := getJSON "/assets/indices/linkIndex.json"}}
-    {{$inbound := index $linkIndex.index.backlinks $curPage}}
-    {{$contentTable := getJSON "/assets/indices/contentIndex.json"}}
-    {{if $inbound}}
-    {{$backlinks := dict "SENTINEL" "SENTINEL"}}
-    {{range $k, $v := $inbound}}
-      {{$cleanedInbound := replace $v.source " " "-"}}
-      {{$ctx := $v.text}}
-      {{$backlinks = merge $backlinks (dict $cleanedInbound $ctx)}}
-    {{end}}
-    {{- range $lnk, $ctx := $backlinks -}}
-      {{$l := printf "%s%s/" $host $lnk}}
-      {{$l = cond (eq $l "//") "/" $l}}
-      {{with (index $contentTable $lnk)}}
-      <li>
-        <a href="{{$l}}" data-ctx="{{$ctx}}" data-src="{{$lnk}}" class="internal-link">{{index (index . "title")}}</a>
-      </li>
-      {{end}}
-    {{- end -}}
-    {{else}}
-    <li>
-      {{ i18n "no_backlinks" }}
-    </li>
-    {{end}}
+  {{/* Parse the Base URL */}}
+  {{$url := urls.Parse .Site.BaseURL }}
+  {{$host := strings.TrimRight "/" $url.Path }}
+  {{$curPage := strings.TrimPrefix $host (strings.TrimRight "/" .Page.RelPermalink)}}
+
+  {{/* Load and Unmarshal Link Index */}}
+  {{$linkIndexResource := resources.Get "/assets/indices/linkIndex.json" }}
+  {{- if $linkIndexResource }}
+    {{$linkIndex := $linkIndexResource.Content | transform.Unmarshal }}
+
+    {{/* Load and Unmarshal Content Table */}}
+    {{$contentTableResource := resources.Get "/assets/indices/contentIndex.json" }}
+    {{- if $contentTableResource }}
+      {{$contentTable := $contentTableResource.Content | transform.Unmarshal }}
+
+      {{/* Get Backlinks for the Current Page */}}
+      {{$inbound := index $linkIndex.index.backlinks $curPage }}
+      {{- if $inbound }}
+        {{- range $inbound }}
+          {{$cleanedInbound := replace .source " " "-" }}
+          {{$ctx := .text }}
+          {{$l := printf "%s%s/" $host $cleanedInbound }}
+          {{$l = cond (eq $l "//") "/" $l }}
+          
+          {{/* Render Link if Found in Content Table */}}
+          {{ with (index $contentTable $cleanedInbound) }}
+          <li>
+            <a href="{{$l}}" data-ctx="{{$ctx}}" data-src="{{$cleanedInbound}}" class="internal-link">
+              {{ index . "title" }}
+            </a>
+          </li>
+          {{ end }}
+        {{- end }}
+      {{ else }}
+      <li>{{ i18n "no_backlinks" }}</li>
+      {{ end }}
+
+    {{ else }}
+    <li>Error: Unable to load content table.</li>
+    {{ end }}
+  {{ else }}
+  <li>Error: Unable to load link index.</li>
+  {{ end }}
 </ul>
